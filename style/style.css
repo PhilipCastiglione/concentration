@@ -4,7 +4,7 @@ body {
 }
 
 .game-board {
-  width: 620px;
+  width: 460px;
   background-color: #cfcffc;
 }
 
@@ -13,8 +13,8 @@ body {
 }
 
 img {
-  width: 150px;
-  height: 100px;
+  width: 110px;
+  height: 150px;
 }
 
 .hide {

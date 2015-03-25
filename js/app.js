@@ -1,7 +1,7 @@
 var app = {
 
   init: function() {
-    app.game.difficulty = 2; //PLACEHOLDER
+    app.game.difficulty = 1; //PLACEHOLDER
     app.game.initGame(); //PLACEHOLDER
   },
 
@@ -78,11 +78,16 @@ var app = {
       }
     },
     checkSlot: function() {
+      //catches game not ready for slot click
       if (app.game.guessesMade === app.game.guessesInRound) {
         return;
       }
-      app.game.guessesMade++;
       var clickedSlot = event.target.id;
+      //catches multiple clicks same slot
+      if (clickedSlot === app.slots['openSlot' + app.game.guessesMade]) {
+        return;
+      }
+      app.game.guessesMade++;
       var clickedCard = app.slots[clickedSlot].card;
       app.slots['openSlot'+app.game.guessesMade] = clickedSlot;
       app.slots.viewSlot(clickedCard);
@@ -96,7 +101,6 @@ var app = {
       $(event.target).attr('src', card);
     },
     resetSlot: function(slot, color) {
-      // disable clicks for a while?
       setTimeout(function() {
         $('#' + slot).attr('src', 'images/' + color + '.jpg');
       }, app.game.difficultyTimer);
@@ -110,8 +114,7 @@ var app = {
     blueCardSet: blueCardSet,
     redCardSet: redCardSet,
     allocateCards: function(color) {
-      // add function and run for blue & red; change slot i everywhere to blue i or red i
-      var numTripleCards = Math.max(0, app.game.difficulty - 1) * 2;
+      var numTripleCards = Math.max(0, 2 - app.game.difficulty) * 2;
       var numDoubleCards = (16 - numTripleCards * 3) / 2;
       var randCards = _.sample(app.cards[color + 'CardSet'], numTripleCards + numDoubleCards);
       var tripleCards = randCards.slice(0, numTripleCards);
