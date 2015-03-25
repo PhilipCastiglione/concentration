@@ -1,0 +1,19 @@
+body {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.game-board {
+  width: 620px;
+  background-color: #cfcffc;
+}
+
+.game-board div {
+  display: inline-block;
+}
+
+img {
+  width: 150px;
+  height: 100px;
+  background-color: #cfffcf;
+}
