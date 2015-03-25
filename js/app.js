@@ -15,6 +15,21 @@ var app = {
       } else {
         app.game.difficulty++;
       }
+    },
+    guessesInRound: 0,
+    guessesMade: 0,
+    guessRound: function() {
+      function checkProgress(){
+        if (app.game.guessesMade === app.game.guessesInRound) {
+          clearInterval(app.game.gameTimer);
+          console.log("finally motherfucker");
+        }
+      }
+      app.cards.firstCard = "";
+      app.game.guessesInRound = 1;
+      app.game.guessesMade = 0;
+      app.game.gameTimer = setInterval(checkProgress, 1000);
+
     }
   },
 
@@ -25,15 +40,24 @@ var app = {
           card: "",
           matches: 0
         };
-        $('#slot'+i).on('click', app.slots.viewSlot);
+        $('#slot'+i).on('click', app.slots.checkSlot);
       }
     },
-    viewSlot: function() {
-      console.log(event);
-      console.log(event.target);
-      console.log(event.target.id.slice(4));
-      var clickedCard = app.slots[event.target.id.slice(4)].card
-      $(event.target).attr('src', clickedCard);
+    checkSlot: function() {
+      if (app.game.guessesMade === app.game.guessesInRound) {
+        return;
+      }
+      app.game.guessesMade++;
+      var clickedCard = app.slots[event.target.id.slice(4)].card;
+      app.slots.viewSlot(clickedCard);
+      app.cards.compareCards(clickedCard);
+      if (app.game.guessesInRound === 1) {
+        app.game.guessesInRound = app.slots[event.target.id.slice(4)].matches;
+        app.cards.firstCard = clickedCard;
+      }
+    },
+    viewSlot: function(card) {
+      $(event.target).attr('src', card);
     }
   },
 
@@ -60,7 +84,14 @@ var app = {
         app.slots[i].card = slotCards[i][0];
         app.slots[i].matches = slotCards[i][1];
       }
-    }
+    },
+    compareCards: function(card){
+      if (app.cards.firstCard && app.cards.firstCard !== card) {
+        // do a round end loss thingo
+        console.log("nawww that's shit u lose");
+      }
+    },
+    firstCard: ""
   }
 
 }
