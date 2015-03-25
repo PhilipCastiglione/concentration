@@ -7,12 +7,15 @@ var app = {
 
   game: {
     initGame: function() {
+      app.game.difficultyTimer = (4 - app.game.difficulty) * 1000;
       app.slots.initSlots();
       app.cards.allocateCards('blue');
       app.cards.allocateCards('red');
+      app.game.guessRound(); //PLACEHOLDER?
     },
     difficulty: 1,
     difficultyNames: ["Child's play", "Adventure", "Challenge", "Torture"],
+    difficultyTimer: 0,
     toggleDifficulty: function() {
       if (app.game.difficulty === 3) {
         app.game.difficulty = 0;
@@ -25,8 +28,7 @@ var app = {
     checkProgress: function() {
       if (app.game.guessesMade === app.game.guessesInRound) {
         clearInterval(app.game.gameTimer);
-        console.log("guessRound end motherfucker");
-        app.game.swapPlayer();
+        setTimeout(app.game.swapPlayer, app.game.difficultyTimer);
       }
     },
     guessRound: function() {
@@ -39,7 +41,18 @@ var app = {
       app.game.gameTimer = setInterval(app.game.checkProgress, 1000);
     },
     swapPlayer: function() {
-      // PLACEHOLDER
+      for (var i = 0; i < 16; i++) {
+        $('#' + app.player.active + i).toggleClass('hide');
+      }
+      if (app.player.active === "blue"){
+        app.player.active = "red";
+      } else {
+        app.player.active = "blue";
+      }
+      for (var i = 0; i < 16; i++) {
+        $('#' + app.player.active + i).toggleClass('hide');
+      }
+      app.game.guessRound();
     }
   },
 
@@ -69,24 +82,24 @@ var app = {
         return;
       }
       app.game.guessesMade++;
-      var clickedSlot = event.target.id.slice(4);
-      var clickedCard = app.slots[app.player.active + clickedSlot].card;
+      var clickedSlot = event.target.id;
+      var clickedCard = app.slots[clickedSlot].card;
       app.slots['openSlot'+app.game.guessesMade] = clickedSlot;
       app.slots.viewSlot(clickedCard);
       app.cards.compareCards(clickedCard);
       if (app.game.guessesInRound === 1) {
-        app.game.guessesInRound = app.slots[app.player.active + clickedSlot].matches;
+        app.game.guessesInRound = app.slots[clickedSlot].matches;
         app.cards.firstCard = clickedCard;
       }
     },
     viewSlot: function(card) {
       $(event.target).attr('src', card);
     },
-    resetSlot: function(slot) {
+    resetSlot: function(slot, color) {
       // disable clicks for a while?
       setTimeout(function() {
-        $('#' + app.player.active + slot).attr('src', 'images/' + app.player.active + '.jpg');
-      }, (3.5-app.game.difficulty)*1000);
+        $('#' + slot).attr('src', 'images/' + color + '.jpg');
+      }, app.game.difficultyTimer);
     },
     openSlot1: '',
     openSlot2: '',
@@ -123,7 +136,7 @@ var app = {
       if (app.cards.firstCard && app.cards.firstCard !== card) {
         for (var i = 1; i <= app.game.guessesMade; i++) {
           var slotToReset = app.slots['openSlot' + i];
-          app.slots.resetSlot(slotToReset);
+          app.slots.resetSlot(slotToReset, app.player.active);
         }
         app.game.guessesInRound = 0;
         app.game.guessesMade = 0;
@@ -140,6 +153,9 @@ var app = {
 
 $(document).ready(app.init);
 
+
+// troubleshoot 2 player
+// where to disable clicks
 // add transitions
 // win condition
-// 2player lol
+// gamify

@@ -19,3 +19,5 @@ var redCardSet = [
   "images/7.jpg",
   "images/8.jpg"
 ];
+
+//find 2 set themed images
