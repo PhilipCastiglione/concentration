@@ -157,8 +157,13 @@ var app = {
 $(document).ready(app.init);
 
 
+//buttons etc
+// fix jpg images -> png and transparency
+// shrink images to correct size
 // troubleshoot 2 player
 // where to disable clicks
 // add transitions
 // win condition
 // gamify
+
+// fonts and make it pretty

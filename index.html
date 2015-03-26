@@ -11,32 +11,94 @@
 </head>
 <body>
 	<header>
-		PLACEHOLDER
+		<div class="left">
+      <button id="play">Play</button>
+      <button id="players">Players</button> : <span class="players"></span><br>
+      <button id="difficulty">Difficulty</button> : <span class="difficulty"></span>
+    </div>
+    <div class="right">
+      High Scores:
+    </div>
+    <div class="clear"></div>
 	</header>
 	<main>
     <div class="game-board">
-      <div><image src="images/blue.jpg" id="blue0"></image><image class="hide" src="images/red.jpg" id="red0"></image></div>
-      <div><image src="images/blue.jpg" id="blue1"></image><image class="hide" src="images/red.jpg" id="red1"></image></div>
-      <div><image src="images/blue.jpg" id="blue2"></image><image class="hide" src="images/red.jpg" id="red2"></image></div>
-      <div><image src="images/blue.jpg" id="blue3"></image><image class="hide" src="images/red.jpg" id="red3"></image></div>
-      <div><image src="images/blue.jpg" id="blue4"></image><image class="hide" src="images/red.jpg" id="red4"></image></div>
-      <div><image src="images/blue.jpg" id="blue5"></image><image class="hide" src="images/red.jpg" id="red5"></image></div>
-      <div><image src="images/blue.jpg" id="blue6"></image><image class="hide" src="images/red.jpg" id="red6"></image></div>
-      <div><image src="images/blue.jpg" id="blue7"></image><image class="hide" src="images/red.jpg" id="red7"></image></div>
-      <div><image src="images/blue.jpg" id="blue8"></image><image class="hide" src="images/red.jpg" id="red8"></image></div>
-      <div><image src="images/blue.jpg" id="blue9"></image><image class="hide" src="images/red.jpg" id="red9"></image></div>
-      <div><image src="images/blue.jpg" id="blue10"></image><image class="hide" src="images/red.jpg" id="red10"></image></div>
-      <div><image src="images/blue.jpg" id="blue11"></image><image class="hide" src="images/red.jpg" id="red11"></image></div>
-      <div><image src="images/blue.jpg" id="blue12"></image><image class="hide" src="images/red.jpg" id="red12"></image></div>
-      <div><image src="images/blue.jpg" id="blue13"></image><image class="hide" src="images/red.jpg" id="red13"></image></div>
-      <div><image src="images/blue.jpg" id="blue14"></image><image class="hide" src="images/red.jpg" id="red14"></image></div>
-      <div><image src="images/blue.jpg" id="blue15"></image><image class="hide" src="images/red.jpg" id="red15"></image></div>
+    <div class="boss"><img src="images/boss2.jpg" alt="" id="boss"></div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue0"></image>
+        <image class="card hide" src="images/red.jpg" id="red0"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue1"></image>
+        <image class="card hide" src="images/red.jpg" id="red1"></image>
+      </div>
+      <div id="mid-separator"></div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue2"></image>
+        <image class="card hide" src="images/red.jpg" id="red2"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue3"></image>
+        <image class="card hide" src="images/red.jpg" id="red3"></image>
+      </div>
+      <br><div id="side-separator"></div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue4"></image>
+        <image class="card hide" src="images/red.jpg" id="red4"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue5"></image>
+        <image class="card hide" src="images/red.jpg" id="red5"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue6"></image>
+        <image class="card hide" src="images/red.jpg" id="red6"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue7"></image>
+        <image class="card hide" src="images/red.jpg" id="red7"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue8"></image>
+        <image class="card hide" src="images/red.jpg" id="red8"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue9"></image>
+        <image class="card hide" src="images/red.jpg" id="red9"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue10"></image>
+        <image class="card hide" src="images/red.jpg" id="red10"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue11"></image>
+        <image class="card hide" src="images/red.jpg" id="red11"></image>
+      </div>
+      <div id="side-separator"></div><!-- 
+   --><br><!-- 
+   --><div>
+        <image class="card" src="images/blue.jpg" id="blue12"></image>
+        <image class="card hide" src="images/red.jpg" id="red12"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue13"></image>
+        <image class="card hide" src="images/red.jpg" id="red13"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue14"></image>
+        <image class="card hide" src="images/red.jpg" id="red14"></image>
+      </div>
+      <div>
+        <image class="card" src="images/blue.jpg" id="blue15"></image>
+        <image class="card hide" src="images/red.jpg" id="red15"></image>
+      </div>
+      <div class="hero-blue"><img src="images/hero2.jpg" alt=""></div>
+      <div class="hero-red"><img src="images/hero1.jpg" alt=""></div>
     </div>
 	</main>
 	<footer>
-		PLACEHOLDER
+		&copy; Copyright 2015 Philip Castiglione<br>
+    I'll sic my dragon on you, for srs
 	</footer>
 </body>
 </html>
-
-<!-- header, footer etc -->
