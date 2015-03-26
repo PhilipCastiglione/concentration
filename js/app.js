@@ -1,20 +1,20 @@
 var app = {
 
   init: function() {
-    app.game.difficulty = 1; //PLACEHOLDER
-    app.game.initGame(); //PLACEHOLDER
+    app.game.enableButtons();
   },
 
   game: {
     initGame: function() {
+      app.game.disableButtons();
       app.game.difficultyTimer = (4 - app.game.difficulty) * 1000;
       app.slots.initSlots();
       app.cards.allocateCards('blue');
       app.cards.allocateCards('red');
-      app.game.guessRound(); //PLACEHOLDER?
+      app.game.guessRound();
     },
     difficulty: 1,
-    difficultyNames: ["Child's play", "Adventure", "Challenge", "Torture"],
+    difficultyNames: ["Casual", "Normal", "Challenge", "Torture"],
     difficultyTimer: 0,
     toggleDifficulty: function() {
       if (app.game.difficulty === 3) {
@@ -22,6 +22,7 @@ var app = {
       } else {
         app.game.difficulty++;
       }
+      $(".difficulty").html(app.game.difficultyNames[app.game.difficulty]);
     },
     guessesInRound: 0,
     guessesMade: 0,
@@ -53,6 +54,18 @@ var app = {
         $('#' + app.player.active + i).toggleClass('hide');
       }
       app.game.guessRound();
+    },
+    enableButtons: function(){
+      $('#play').on('click', app.game.initGame);
+      $('#difficulty').on('click', app.game.toggleDifficulty);
+      $('#players').on('click', app.player.togglePlayers);
+      $('button').toggleClass('inactive');
+    },
+    disableButtons: function(){
+      $('#play').off('click', app.game.initGame);
+      $('#difficulty').off('click', app.game.toggleDifficulty);
+      $('#players').off('click', app.player.togglePlayers);
+      $('button').toggleClass('inactive');
     }
   },
 
@@ -148,6 +161,15 @@ var app = {
     firstCard: ""
   },
   player: {
+    quantity: 2,
+    togglePlayers: function() {
+      if (app.player.quantity === 2) {
+        app.player.quantity = 1;
+      } else {
+        app.player.quantity = 2;
+      }
+      $(".players").html(app.player.quantity);
+    },
     blue: {},
     red: {},
     active: "blue"
@@ -157,13 +179,9 @@ var app = {
 $(document).ready(app.init);
 
 
-//buttons etc
+// buttons to inactive visual
+// 1 vs 2 player
 // fix jpg images -> png and transparency
 // shrink images to correct size
-// troubleshoot 2 player
-// where to disable clicks
 // add transitions
 // win condition
-// gamify
-
-// fonts and make it pretty

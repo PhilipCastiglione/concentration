@@ -1,28 +1,53 @@
 body {
+  font-family: 'Niconne', cursive;
   width: 95%;
   margin: 0 auto;
-  background-image: url('images/stone-background.jpg');
+  background-image: url('../images/stone-background.jpg');
+  background-size: cover;
+  color: #D4AF37;
 }
 
 .left {
   border: 1px solid brown;
   width: 20%;
   float: left;
-  padding: .5em;
+  padding: .25em;
+  font-size: 1.2em;
 }
 
 button {
+  font-family: 'UnifrakturCook', cursive;
+  width: 50%;
   font-size: 1em;
   margin: .125em .25em;
+  border-style: none;
+  color: #DCDCDC;
+  border-image: url("../images/wood2.jpg");
+  border-image-width: 3px;
+  padding: 2px;
+}
+
+button.inactive {
+  /*background-color: rgba(150,150,150,.5)*/
 }
 
 #play {
   width: 95%;
   font-size: 2em;
   margin: .125em;
+  background-image: url("../images/wood2.jpg");
+}
+
+#players {
+  background-image: url("../images/wood1.jpg");
+}
+
+#difficulty {
+  background-image: url("../images/wood1.jpg");
 }
 
 .right {
+  font-size: 2em;
   border: 1px solid brown;
   width: 20%;
   float: right;
