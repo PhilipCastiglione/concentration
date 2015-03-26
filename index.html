@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>concentration</title>
+  <link rel="stylesheet" href="style/normalize.css">
   <link href='http://fonts.googleapis.com/css?family=Niconne|UnifrakturCook:700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="style/style.css">
 	<script src="js/jquery.js"></script>
@@ -13,103 +14,119 @@
 <body>
 	<header>
 		<div class="left">
-      <button id="play">
+      <button class="inactive" id="play">
         PLAY
       </button>
-      <button id="players">
+      <button class="inactive" id="players">
         Players
-      </button>
+      </button>&nbsp;&nbsp;
       <span class="players">
         2
       </span>
       <br>
-      <button id="difficulty">
+      <button class="inactive" id="difficulty">
         Difficulty
-      </button>
+      </button>&nbsp;&nbsp;
       <span class="difficulty">
         Normal
       </span>
     </div>
     <div class="right">
+        High Scores:<br>
       <div class="high-scores">
-        High Scores:
+        1 - <span class="score1">(empty)</span><br>
+        2 - <span class="score2">(empty)</span><br>
+        3 - <span class="score3">(empty)</span><br>
+        4 - <span class="score4">(empty)</span>
       </div>
     </div>
     <div class="clear"></div>
 	</header>
 	<main>
     <div class="game-board">
-    <div class="boss"><img src="images/boss2.jpg" alt="" id="boss"></div>
+    <div class="boss"><img src="images/castle.png" alt="" id="boss"></div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue0"></image>
-        <image class="card hide" src="images/red.jpg" id="red0"></image>
+        <img class="card" src="images/blue.png" id="blue0">
+        <img class="card hide" src="images/red.png" id="red0">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue1"></image>
-        <image class="card hide" src="images/red.jpg" id="red1"></image>
+        <img class="card" src="images/blue.png" id="blue1">
+        <img class="card hide" src="images/red.png" id="red1">
       </div>
       <div id="mid-separator"></div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue2"></image>
-        <image class="card hide" src="images/red.jpg" id="red2"></image>
+        <img class="card" src="images/blue.png" id="blue2">
+        <img class="card hide" src="images/red.png" id="red2">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue3"></image>
-        <image class="card hide" src="images/red.jpg" id="red3"></image>
+        <img class="card" src="images/blue.png" id="blue3">
+        <img class="card hide" src="images/red.png" id="red3">
       </div>
       <br><div id="side-separator"></div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue4"></image>
-        <image class="card hide" src="images/red.jpg" id="red4"></image>
+        <img class="card" src="images/blue.png" id="blue4">
+        <img class="card hide" src="images/red.png" id="red4">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue5"></image>
-        <image class="card hide" src="images/red.jpg" id="red5"></image>
+        <img class="card" src="images/blue.png" id="blue5">
+        <img class="card hide" src="images/red.png" id="red5">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue6"></image>
-        <image class="card hide" src="images/red.jpg" id="red6"></image>
+        <img class="card" src="images/blue.png" id="blue6">
+        <img class="card hide" src="images/red.png" id="red6">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue7"></image>
-        <image class="card hide" src="images/red.jpg" id="red7"></image>
+        <img class="card" src="images/blue.png" id="blue7">
+        <img class="card hide" src="images/red.png" id="red7">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue8"></image>
-        <image class="card hide" src="images/red.jpg" id="red8"></image>
+        <img class="card" src="images/blue.png" id="blue8">
+        <img class="card hide" src="images/red.png" id="red8">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue9"></image>
-        <image class="card hide" src="images/red.jpg" id="red9"></image>
+        <img class="card" src="images/blue.png" id="blue9">
+        <img class="card hide" src="images/red.png" id="red9">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue10"></image>
-        <image class="card hide" src="images/red.jpg" id="red10"></image>
+        <img class="card" src="images/blue.png" id="blue10">
+        <img class="card hide" src="images/red.png" id="red10">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue11"></image>
-        <image class="card hide" src="images/red.jpg" id="red11"></image>
+        <img class="card" src="images/blue.png" id="blue11">
+        <img class="card hide" src="images/red.png" id="red11">
       </div>
       <div id="side-separator"></div><!-- 
    --><br><!-- 
    --><div>
-        <image class="card" src="images/blue.jpg" id="blue12"></image>
-        <image class="card hide" src="images/red.jpg" id="red12"></image>
+        <img class="card" src="images/blue.png" id="blue12">
+        <img class="card hide" src="images/red.png" id="red12">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue13"></image>
-        <image class="card hide" src="images/red.jpg" id="red13"></image>
+        <img class="card" src="images/blue.png" id="blue13">
+        <img class="card hide" src="images/red.png" id="red13">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue14"></image>
-        <image class="card hide" src="images/red.jpg" id="red14"></image>
+        <img class="card" src="images/blue.png" id="blue14">
+        <img class="card hide" src="images/red.png" id="red14">
       </div>
       <div>
-        <image class="card" src="images/blue.jpg" id="blue15"></image>
-        <image class="card hide" src="images/red.jpg" id="red15"></image>
+        <img class="card" src="images/blue.png" id="blue15">
+        <img class="card hide" src="images/red.png" id="red15">
       </div>
-      <div class="hero-blue"><img src="images/hero2.jpg" alt=""></div>
-      <div class="hero-red"><img src="images/hero1.jpg" alt=""></div>
+      <div class="hero-blue inactive">
+        <img class="hero" src="images/hero1.png" alt="">
+        <div class="hero-block">
+          <!-- <img class="attack" src="images/blueattack.gif" alt="">
+          Score: <span id="blue-score">0</span> -->
+        </div>
+      </div>
+      <div class="hero-red inactive">
+        <div class="hero-block">
+          <!-- <img class="attack" src="images/redattack.gif" alt="">
+          Score: <span id="red-score">0</span> -->
+        </div>
+        <img class="hero" src="images/hero2.png" alt="">
+      </div>
     </div>
 	</main>
 	<footer>

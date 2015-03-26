@@ -1,16 +1,16 @@
 var blueCardSet = [
-  "images/faery1.jpg",
-  "images/faery2.jpg",
-  "images/faery3.jpg",
-  "images/faery4.jpg",
-  "images/faery5.jpg",
-  "images/faery6.jpg",
-  "images/faery7.jpg",
-  "images/faery8.jpg",
-  "images/faery9.jpg",
-  "images/faery10.jpg",
-  "images/faery11.jpg",
-  "images/faery12.jpg"
+  "images/faery1.png",
+  "images/faery2.png",
+  "images/faery3.png",
+  "images/faery4.png",
+  "images/faery5.png",
+  "images/faery6.png",
+  "images/faery7.png",
+  "images/faery8.png",
+  "images/faery9.png",
+  "images/faery10.png",
+  "images/faery11.png",
+  "images/faery12.png"
 ];
 
 var redCardSet = [
@@ -32,3 +32,8 @@ var redCardSet = [
   "images/dragon16.png",
   "images/dragon17.png"
 ];
+
+var bossSet = [
+  "images/boss1.png",
+  "images/boss2.png"
+]

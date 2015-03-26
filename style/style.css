@@ -1,6 +1,6 @@
 body {
   font-family: 'Niconne', cursive;
-  width: 95%;
+  width: 83%;
   margin: 0 auto;
   background-image: url('../images/stone-background.jpg');
   background-size: cover;
@@ -8,7 +8,6 @@ body {
 }
 
 .left {
-  border: 1px solid brown;
   width: 20%;
   float: left;
   padding: .25em;
@@ -18,22 +17,21 @@ body {
 button {
   font-family: 'UnifrakturCook', cursive;
   width: 50%;
-  font-size: 1em;
+  font-size: .8em;
   margin: .125em .25em;
   border-style: none;
   color: #DCDCDC;
   border-image: url("../images/wood2.jpg");
   border-image-width: 3px;
-  padding: 2px;
 }
 
-button.inactive {
-  /*background-color: rgba(150,150,150,.5)*/
+.inactive {
+  opacity: .5;
 }
 
 #play {
   width: 95%;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: .125em;
   background-image: url("../images/wood2.jpg");
 }
@@ -47,11 +45,15 @@ button.inactive {
 }
 
 .right {
-  font-size: 2em;
-  border: 1px solid brown;
+  font-size: 1.5em;
   width: 20%;
   float: right;
-  padding: 1em;
+  padding: .25em;
+}
+
+.high-scores {
+  font-size: 1em;
+  line-height: 1em;
 }
 
 .clear {
@@ -60,7 +62,7 @@ button.inactive {
 
 .game-board {
   position: relative;
-  border: 1px solid purple;
+  margin-top: 1%;
   text-align: center;
 }
 
@@ -76,12 +78,12 @@ button.inactive {
   top: -58%;
   width: 88%;
   margin: 0;
-  border: 1px dashed green;
-  z-index: -1;
+  z-index: -2;
 }
 
 #boss {
   width: 60%;
+  border: 7px solid rgba(200,200,200,.7);
 }
 
 #mid-separator {
@@ -94,7 +96,7 @@ button.inactive {
 
 img.card {
   max-width: 100%;
-  background-color: white;
+  position: relative;
 }
 
 .hide {
@@ -106,25 +108,21 @@ img.card {
   display: block;
   bottom: 0;
   left: 0;
-  border: 1px solid blue;
   width: 30%;
   text-align: left;
   z-index: -1;
+  font-size: 2em;
 }
 
-.hero-blue img {
-  width: 60%;
-  -webkit-transform: rotateY(60deg);
-  -webkit-transform: rotate(5deg);
-  -o-transform: rotateY(60deg);
-  -o-transform: rotate(5deg);
-  -ms-transform: rotateY(60deg);
-  -ms-transform: rotate(5deg);
-  -moz-transform: rotateY(60deg);
-  -moz-transform: rotate(5deg);
-  transform: rotateY(60deg);
-  transform: rotate(5deg);
-  margin-left: -2.5em;
+.hero-blue img.hero {
+  width: 42%;
+  -webkit-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  transform: rotate(3deg);
+  margin-right: .5em;
+  margin-left: -1.5em;
 }
 
 .game-board div.hero-red {
@@ -132,14 +130,25 @@ img.card {
   display: block;
   bottom: 0;
   right: 0;
-  border: 1px solid red;
   width: 30%;
   text-align: right;
   z-index: -1;
+  font-size: 2em;
 }
 
-.hero-red img {
-  width: 45%;
+.hero-red img.hero {
+  width: 54%;
+  margin-left: 2.5em;
+  margin-right: -1em;
+}
+
+.attack {
+  width: 90%;
+}
+
+.game-board div.hero-block {
+  margin: 0;
+  width: 40%;
 }
 
 footer {
