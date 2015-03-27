@@ -12,6 +12,7 @@ body {
   float: left;
   padding: .25em;
   font-size: 1.2em;
+  z-index: 2;
 }
 
 button {
@@ -83,8 +84,9 @@ button {
 .game-board div.boss {
   position: absolute;
   top: -52%;
-  width: 88%;
+  width: 60%;
   margin: 0;
+  margin-left: 14%;
   z-index: -2;
   color: #DCDCDC;
   font-family: 'UnifrakturCook', cursive;
@@ -92,7 +94,7 @@ button {
 }
 
 #boss {
-  width: 50%;
+  width: 85%;
   border: 7px solid rgba(200,200,200,.7);
 }
 

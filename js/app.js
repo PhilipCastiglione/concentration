@@ -282,7 +282,6 @@ $(document).ready(app.init);
 // confirm winning and reset
 
 // host it on gh-pages
-// fix retarded buttons
 
 // ensure clicking already won card is caught
 // ensure clicking first/2nd card when 3 set is caught
