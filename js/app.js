@@ -3,7 +3,10 @@ var app = {
   init: function() {
     // retrieve from local storage
     var serializedHighScores = localStorage.getItem("highScores");
-    app.game.highScores = JSON.parse(serializedHighScores);
+    var parsedHighScores = JSON.parse(serializedHighScores) 
+    if (parsedHighScores) {
+      app.game.highScores = parsedHighScores;
+    }
     
     app.game.renderHighScores();
     app.game.enableButtons();
