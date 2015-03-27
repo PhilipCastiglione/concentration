@@ -101,7 +101,7 @@ var app = {
         $('#boss').attr('src', "");
         $('.boss').html(('<br><br><br>' + player + ' player wins!').toUpperCase());
         app.game.checkHighScore(player);
-        setTimeout(app.game.resetGame, 5000);
+        setTimeout(app.game.resetGame, 10000);
       }
     },
     checkHighScore: function(player) {
@@ -140,10 +140,18 @@ var app = {
     },
     resetGame: function() {
       $('.boss').html('<img id="boss" src="images/castle.png"> alt=""');
-      $('.hero-blue').setClass('inactive');
-      $('.hero-red').setClass('inactive');
-      app.player.active = "blue"
+      $('.hero-blue').addClass('inactive');
+      $('.hero-red').addClass('inactive');
       app.game.enableButtons();
+      for (var i = 0; i < 16; i++) {
+        $('#red' + i).attr("src", "images/red.png");
+        $('#red' + i).addClass("hide");
+        $('#blue' + i).attr("src", "images/blue.png");
+        $('#blue' + i).removeClass("hide");
+      }
+
+      app.player.active = "blue"
+
     }
   },
 
@@ -195,7 +203,14 @@ var app = {
       }
     },
     viewSlot: function(card) {
-      $(event.target).attr('src', card);
+      var clickTarget = $(event.target);
+      clickTarget.addClass('flip');
+
+      function renderNewCard(){
+        clickTarget.attr('src', card);
+        clickTarget.removeClass('flip');        
+      }
+      setTimeout(renderNewCard, 150);
     },
     resetSlot: function(slot, color) {
       setTimeout(function() {
@@ -263,14 +278,16 @@ var app = {
 $(document).ready(app.init);
 
 
-// check requirements
-// readme
-// add transitions & flips
+// run through for big bugs
+// confirm winning and reset
 
-// test reset
+// host it on gh-pages
+// fix retarded buttons
+
 // ensure clicking already won card is caught
 // ensure clicking first/2nd card when 3 set is caught
 
+// add more animations and transitions
 // fix high score prompt annoying
 // refine 'damage'/score scenario
 // player block gif on 'attack'
@@ -278,6 +295,9 @@ $(document).ready(app.init);
 // think about game diff impacts
 // add number to 2/3 cards
 
+// improve readme
+// better name
+// document icon
 // improve local storage coverage
 // use border gradients
 // add faery/dragon name to card

@@ -1,7 +1,7 @@
 body {
   font-family: 'Niconne', cursive;
-  width: 83%;
-  margin: 0 auto;
+  width: 78%;
+  margin: 8% auto 0 auto;
   background-image: url('../images/stone-background.jpg');
   background-size: cover;
   color: #D4AF37;
@@ -64,6 +64,13 @@ button {
   position: relative;
   margin-top: 1%;
   text-align: center;
+  perspective: 1000px;
+}
+
+.flip {
+  transition: 0.4s;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
 }
 
 .game-board div {
@@ -75,7 +82,7 @@ button {
 
 .game-board div.boss {
   position: absolute;
-  top: -58%;
+  top: -52%;
   width: 88%;
   margin: 0;
   z-index: -2;
@@ -85,7 +92,7 @@ button {
 }
 
 #boss {
-  width: 60%;
+  width: 50%;
   border: 7px solid rgba(200,200,200,.7);
 }
 
@@ -99,6 +106,7 @@ button {
 
 img.card {
   max-width: 100%;
+
   position: relative;
 }
 
@@ -157,5 +165,5 @@ img.card {
 
 footer {
   font-size: .8em;
-  margin: .5em 0;
+  margin: 1em 0;
 }
