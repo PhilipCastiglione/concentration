@@ -79,6 +79,9 @@ button {
   width: 88%;
   margin: 0;
   z-index: -2;
+  color: #DCDCDC;
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 2em;
 }
 
 #boss {
@@ -111,7 +114,7 @@ img.card {
   width: 30%;
   text-align: left;
   z-index: -1;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .hero-blue img.hero {
@@ -133,12 +136,12 @@ img.card {
   width: 30%;
   text-align: right;
   z-index: -1;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .hero-red img.hero {
   width: 54%;
-  margin-left: 2.5em;
+  margin-left: 1em;
   margin-right: -1em;
 }
 
@@ -149,6 +152,7 @@ img.card {
 .game-board div.hero-block {
   margin: 0;
   width: 40%;
+  display: inline-block;
 }
 
 footer {

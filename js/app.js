@@ -1,6 +1,11 @@
 var app = {
 
   init: function() {
+    // retrieve from local storage
+    var serializedHighScores = localStorage.getItem("highScores");
+    app.game.highScores = JSON.parse(serializedHighScores);
+    
+    app.game.renderHighScores();
     app.game.enableButtons();
   },
 
@@ -12,6 +17,9 @@ var app = {
       app.slots.initSlots();
       app.cards.allocateCards('blue');
       app.cards.allocateCards('red');
+      app.player.redScore = 0;
+      app.player.blueScore = 0;
+      app.game.round = 0;
       app.game.guessRound();
     },
     difficulty: 1,
@@ -30,15 +38,20 @@ var app = {
     checkProgress: function() {
       if (app.game.guessesMade === app.game.guessesInRound) {
         if (app.game.guessesMade > 0) {
+          var scoreIncrement = (50 - app.game.round) * app.game.guessesMade * (app.game.difficulty + 1);
+          app.player[app.player.active+"Score"] += scoreIncrement;
+          $('#' + app.player.active + '-score').html(app.player[app.player.active+"Score"]);
           if (app.slots.openSlot1) {app.slots[app.slots.openSlot1].won = true;}
           if (app.slots.openSlot2) {app.slots[app.slots.openSlot2].won = true;}
           if (app.slots.openSlot3) {app.slots[app.slots.openSlot3].won = true;}
+          app.game.checkWin(app.player.active);
         }
         clearInterval(app.game.gameTimer);
         setTimeout(app.game.swapPlayer, app.game.difficultyTimer);
       }
     },
     guessRound: function() {
+      app.game.round++;
       $('.hero-' + app.player.active).toggleClass('inactive');
       app.cards.firstCard = "";
       app.slots.openSlot1 = "";
@@ -65,17 +78,72 @@ var app = {
       }
       app.game.guessRound();
     },
-    enableButtons: function(){
+    enableButtons: function() {
       $('#play').on('click', app.game.initGame);
       $('#difficulty').on('click', app.game.toggleDifficulty);
       $('#players').on('click', app.player.togglePlayers);
       $('button').toggleClass('inactive');
     },
-    disableButtons: function(){
+    disableButtons: function() {
       $('#play').off('click', app.game.initGame);
       $('#difficulty').off('click', app.game.toggleDifficulty);
       $('#players').off('click', app.player.togglePlayers);
       $('button').toggleClass('inactive');
+    },
+    checkWin: function(player) {
+      var win = true;
+      for (var i = 0; i < 16; i++) {
+        if (!app.slots[player + i].won) {
+          win = false;
+        }
+      }
+      if (win) {
+        $('#boss').attr('src', "");
+        $('.boss').html(('<br><br><br>' + player + ' player wins!').toUpperCase());
+        app.game.checkHighScore(player);
+        setTimeout(app.game.resetGame, 5000);
+      }
+    },
+    checkHighScore: function(player) {
+      var bossBlock = $('.boss');
+      var bossText = bossBlock.html();
+      for (var i = 1; i <= 4; i++) {
+        if (app.player[player + 'Score'] > app.game.highScores[i][1]) {
+          bossText += ('<br>' + player + ' player<br>new high score ' + i + ': ' + app.player[player + 'Score'] + '!').toUpperCase();
+          bossBlock.html(bossText);
+          app.game.newHighScore(i, app.player[player + 'Score']);
+          break;
+        }
+      }
+    },
+    newHighScore: function(rank , score) {
+      app.game.highScores[rank][0] = prompt("Enter your name! (max 8 chars)").slice(0, 8);
+      app.game.highScores[rank][1] = score;
+
+      // send to local storage
+      var serializedHighScores = JSON.stringify(app.game.highScores);
+      localStorage.setItem("highScores", serializedHighScores);
+      
+      app.game.renderHighScores();
+    },
+    renderHighScores: function() {
+      for (var i = 1; i <=4; i++) {
+        $('#score' + i).html(app.game.highScores[i][0]);
+        $('#score-num' + i).html(app.game.highScores[i][1]);
+      }
+    },
+    highScores: {
+      1: ["(empty)", 0],
+      2: ["(empty)", 0],
+      3: ["(empty)", 0],
+      4: ["(empty)", 0]
+    },
+    resetGame: function() {
+      $('.boss').html('<img id="boss" src="images/castle.png"> alt=""');
+      $('.hero-blue').setClass('inactive');
+      $('.hero-red').setClass('inactive');
+      app.player.active = "blue"
+      app.game.enableButtons();
     }
   },
 
@@ -186,23 +254,33 @@ var app = {
       }
       $(".players").html(app.player.quantity);
     },
-    blue: {},
-    red: {},
+    blueScore: 0,
+    redScore: 0,
     active: "blue"
   }
 }
 
 $(document).ready(app.init);
 
+
+// check requirements
+// readme
+// add transitions & flips
+
+// test reset
 // ensure clicking already won card is caught
 // ensure clicking first/2nd card when 3 set is caught
-// put faeries and dragons onto blank
-// 'damage'/score scenario
-// high scores & player name (local storage lol)
-// rest of player block (score + gif)
-// add transitions
-// win condition based on all cards won
-// on game end reset, img to castle etc
+
+// fix high score prompt annoying
+// refine 'damage'/score scenario
+// player block gif on 'attack'
+// improve timing of game diff
+// think about game diff impacts
+// add number to 2/3 cards
+
+// improve local storage coverage
+// use border gradients
+// add faery/dragon name to card
 // sounds
 // more bosses
 // more game mechanics

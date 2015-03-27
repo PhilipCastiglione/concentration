@@ -34,10 +34,10 @@
     <div class="right">
         High Scores:<br>
       <div class="high-scores">
-        1 - <span class="score1">(empty)</span><br>
-        2 - <span class="score2">(empty)</span><br>
-        3 - <span class="score3">(empty)</span><br>
-        4 - <span class="score4">(empty)</span>
+        1 - <span id="score-num1"></span> - <span id="score1"></span><br>
+        2 - <span id="score-num2"></span> - <span id="score2"></span><br>
+        3 - <span id="score-num3"></span> - <span id="score3"></span><br>
+        4 - <span id="score-num4"></span> - <span id="score4"></span>
       </div>
     </div>
     <div class="clear"></div>
@@ -45,85 +45,85 @@
 	<main>
     <div class="game-board">
     <div class="boss"><img src="images/castle.png" alt="" id="boss"></div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue0">
         <img class="card hide" src="images/red.png" id="red0">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue1">
         <img class="card hide" src="images/red.png" id="red1">
       </div>
       <div id="mid-separator"></div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue2">
         <img class="card hide" src="images/red.png" id="red2">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue3">
         <img class="card hide" src="images/red.png" id="red3">
       </div>
       <br><div id="side-separator"></div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue4">
         <img class="card hide" src="images/red.png" id="red4">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue5">
         <img class="card hide" src="images/red.png" id="red5">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue6">
         <img class="card hide" src="images/red.png" id="red6">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue7">
         <img class="card hide" src="images/red.png" id="red7">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue8">
         <img class="card hide" src="images/red.png" id="red8">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue9">
         <img class="card hide" src="images/red.png" id="red9">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue10">
         <img class="card hide" src="images/red.png" id="red10">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue11">
         <img class="card hide" src="images/red.png" id="red11">
       </div>
       <div id="side-separator"></div><!-- 
    --><br><!-- 
-   --><div>
+   --><div .flip>
         <img class="card" src="images/blue.png" id="blue12">
         <img class="card hide" src="images/red.png" id="red12">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue13">
         <img class="card hide" src="images/red.png" id="red13">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue14">
         <img class="card hide" src="images/red.png" id="red14">
       </div>
-      <div>
+      <div .flip>
         <img class="card" src="images/blue.png" id="blue15">
         <img class="card hide" src="images/red.png" id="red15">
       </div>
       <div class="hero-blue inactive">
         <img class="hero" src="images/hero1.png" alt="">
         <div class="hero-block">
-          <!-- <img class="attack" src="images/blueattack.gif" alt="">
-          Score: <span id="blue-score">0</span> -->
+          <!-- <img class="attack" src="images/blueattack.gif" alt=""> -->
+          Score: <span id="blue-score">0</span>
         </div>
       </div>
       <div class="hero-red inactive">
         <div class="hero-block">
-          <!-- <img class="attack" src="images/redattack.gif" alt="">
-          Score: <span id="red-score">0</span> -->
+          <!-- <img class="attack" src="images/redattack.gif" alt=""> -->
+          Score: <span id="red-score">0</span>
         </div>
         <img class="hero" src="images/hero2.png" alt="">
       </div>
@@ -131,7 +131,7 @@
 	</main>
 	<footer>
 		&copy; Copyright 2015 Philip Castiglione<br>
-    I'll sic my dragon on you
+    I'll sic the faeries on you
 	</footer>
 </body>
 </html>
