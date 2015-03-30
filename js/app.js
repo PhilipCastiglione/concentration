@@ -38,9 +38,13 @@ var app = {
     checkProgress: function() {
       if (app.game.guessesMade === app.game.guessesInRound) {
         if (app.game.guessesMade > 0) {
+          $('#' + app.player.active + '-attack').attr("src", "images/" + app.player.active + "attack.gif");
+          setTimeout(function(){
+            $('#' + app.player.active + '-attack').attr("src", "images/" + app.player.active + "attack.png");
+          }, 1400);
           var scoreIncrement = (50 - app.game.round) * app.game.guessesMade * (app.game.difficulty + 1);
-          app.player[app.player.active+"Score"] += scoreIncrement;
-          $('#' + app.player.active + '-score').html(app.player[app.player.active+"Score"]);
+          app.player[app.player.active + "Score"] += scoreIncrement;
+          $('#' + app.player.active + '-score').html(app.player[app.player.active + "Score"]);
           if (app.slots.openSlot1) {app.slots[app.slots.openSlot1].won = true;}
           if (app.slots.openSlot2) {app.slots[app.slots.openSlot2].won = true;}
           if (app.slots.openSlot3) {app.slots[app.slots.openSlot3].won = true;}
@@ -98,8 +102,12 @@ var app = {
         }
       }
       if (win) {
-        $('#boss').attr('src', "");
-        $('.boss').html(('<br><br><br>' + player + ' player wins!').toUpperCase());
+        $('#boss').fadeTo(1000, 0);
+        var winMsg = ('<br><br><br>' + player + ' player wins!').toUpperCase();
+        function winMsgDisplay() {
+          $('.boss').html(winMsg);
+        }
+        setTimeout(winMsgDisplay, 1000);
         app.game.checkHighScore(player);
         setTimeout(app.game.resetGame, 10000);
       }
@@ -116,15 +124,20 @@ var app = {
         }
       }
     },
-    newHighScore: function(rank , score) {
-      app.game.highScores[rank][0] = prompt("Enter your name! (max 8 chars)").slice(0, 8);
+    newHighScore: function(rank, score) {
+      $('#score-num' + rank).html(score);
       app.game.highScores[rank][1] = score;
+      $('#score' + rank).html('<input type="text" placeholder="enter name" id="score-input">');
+      var newRank = rank;
 
-      // send to local storage
-      var serializedHighScores = JSON.stringify(app.game.highScores);
-      localStorage.setItem("highScores", serializedHighScores);
-      
-      app.game.renderHighScores();
+      $('#score-input').on('keypress', function(rank) {
+        if (event.which === 13) {
+          app.game.highScores[newRank][0] = ($('#score-input').val()).slice(0, 8);
+          var serializedHighScores = JSON.stringify(app.game.highScores);
+          localStorage.setItem("highScores", serializedHighScores);
+          app.game.renderHighScores();
+        }
+      });
     },
     renderHighScores: function() {
       for (var i = 1; i <=4; i++) {
@@ -140,6 +153,7 @@ var app = {
     },
     resetGame: function() {
       $('.boss').html('<img id="boss" src="images/castle.png"> alt=""');
+      $('#boss').fadeTo(0, 1);
       $('.hero-blue').addClass('inactive');
       $('.hero-red').addClass('inactive');
       app.game.enableButtons();
@@ -184,10 +198,13 @@ var app = {
         return;
       }
       var clickedSlot = event.target.id;
-      //catches multiple clicks same slot
-      if (clickedSlot === app.slots['openSlot' + app.game.guessesMade]) {
-        return;
+      //catches clicks on open slot
+      for (var i = 1; i <=3; i++) {
+        if (clickedSlot === app.slots['openSlot' + i]) {
+          return;
+        }
       }
+
       //catches clicks on won slot
       if (app.slots[clickedSlot].won) {
         return;
@@ -277,22 +294,19 @@ var app = {
 
 $(document).ready(app.init);
 
+// refactor to make it not terrible
+// relocate boss image
 
-// run through for big bugs
-// confirm winning and reset
-
-// host it on gh-pages
-
-// ensure clicking already won card is caught
-// ensure clicking first/2nd card when 3 set is caught
+// player change image more obvious
+// player block gif on 'attack' success
+// number of cards to match visible
+// add number to 2/3 cards
 
 // add more animations and transitions
-// fix high score prompt annoying
+
 // refine 'damage'/score scenario
-// player block gif on 'attack'
 // improve timing of game diff
 // think about game diff impacts
-// add number to 2/3 cards
 
 // improve readme
 // better name

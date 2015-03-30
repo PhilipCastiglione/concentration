@@ -8,7 +8,7 @@ body {
 }
 
 .left {
-  width: 20%;
+  width: 22%;
   float: left;
   padding: .25em;
   font-size: 1.2em;
@@ -47,7 +47,7 @@ button {
 
 .right {
   font-size: 1.5em;
-  width: 20%;
+  width: 22%;
   float: right;
   padding: .25em;
 }
@@ -55,6 +55,15 @@ button {
 .high-scores {
   font-size: 1em;
   line-height: 1em;
+}
+
+input {
+  font-size: 1em;
+  line-height: 1.2em;
+  border-style: none;
+  background: none;
+  font-family: 'Niconne', cursive;
+  max-width: 55%;
 }
 
 .clear {
@@ -88,7 +97,6 @@ button {
   margin: 0;
   margin-left: 14%;
   z-index: -2;
-  color: #DCDCDC;
   font-family: 'UnifrakturCook', cursive;
   font-size: 2em;
 }
@@ -157,6 +165,7 @@ img.card {
 
 .attack {
   width: 90%;
+  margin-bottom: -.5em;
 }
 
 .game-board div.hero-block {
